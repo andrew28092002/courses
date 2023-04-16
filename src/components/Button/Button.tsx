@@ -1,18 +1,27 @@
-import React, { ReactNode } from "react";
+import React, {
+  ButtonHTMLAttributes,
+  DetailedHTMLProps,
+  ReactNode,
+} from "react";
 import styles from "./Button.module.css";
 
-interface ButtonProps {
+interface ButtonProps
+  extends DetailedHTMLProps<
+    ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {
   children: ReactNode;
   appearance: "primary" | "ghost";
 }
 
-const Button = ({ appearance, children }: ButtonProps) => {
+const Button = ({ appearance, children, className, ...props }: ButtonProps) => {
   return (
     <>
       <button
-        className={`${styles.button} ${
+        className={`${className} ${styles.button} ${
           appearance == "ghost" ? styles.ghost : styles.primary
         }`}
+        {...props}
       >
         {children}
       </button>
