@@ -21,7 +21,7 @@ export default function Home() {
         <Button appearance="primary">
           Submit
         </Button>
-        <Button appearance="ghost">
+        <Button appearance="ghost" arrow="down">
           Submit
         </Button>
       </main>
