@@ -18,7 +18,7 @@ export default function Home() {
         <HTag tag='h3'>
           Something
         </HTag>
-        <Button appearance="primary">
+        <Button appearance="primary" arrow="right">
           Submit
         </Button>
         <Button appearance="ghost" arrow="down">
