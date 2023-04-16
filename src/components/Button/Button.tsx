@@ -13,7 +13,7 @@ interface ButtonProps
   > {
   children: ReactNode;
   appearance: "primary" | "ghost";
-  arrow?: "right" | "down" | "left" | "none";
+  arrow?: "right" | "down" | "none";
 }
 
 const Button = ({
@@ -35,11 +35,7 @@ const Button = ({
         {arrow != "none" && (
           <span
             className={`${styles.arrow} ${
-              arrow == "down"
-                ? styles.down
-                : arrow == "right"
-                ? styles.right
-                : styles.left
+              arrow == "down" ? styles.down : styles.right
             }`}
           >
             <ArrowIcon />
