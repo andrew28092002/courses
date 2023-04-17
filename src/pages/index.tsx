@@ -37,6 +37,7 @@ export default function Home() {
         <Tag size="M" color="primary" >Ghost</Tag>
         <Tag size="M" color="gray" href="#">Ghost</Tag>
         <Rating rating={4}/>
+        <Rating rating={0} isEditable={true}/>
       </main>
     </>
   );

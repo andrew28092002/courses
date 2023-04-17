@@ -25,19 +25,25 @@ const Rating = ({
     new Array(5).fill(<></>)
   );
 
-  const constructRating = useCallback(
-    (currentRating: number) => {
-      const updatedArr = ratingArr.map((el: JSX.Element, i) => (
-        <StarIcon
-          className={`${styles.star} ${i < currentRating && styles.filled}`}
-        />
-      ));
+  const changeDisplay = (stars: number) => {
+    if (!isEditable) {
+      return;
+    }
 
-      setRatingArr(updatedArr);
-      console.log("RENDER CONSTRUCT FUNCTION");
-    },
-    [rating]
-  );
+    constructRating(stars);
+  };
+
+  const constructRating = (currentRating: number) => {
+    const updatedArr = ratingArr.map((el: JSX.Element, i) => (
+      <StarIcon key={i}
+        className={`${styles.star} ${i < currentRating && styles.filled}`}
+        onMouseEnter={() => changeDisplay(i + 1)}
+        onMouseLeave={() => changeDisplay(rating)}
+      />
+    ));
+
+    setRatingArr(updatedArr);
+  };
 
   useEffect(() => {
     constructRating(rating);
