@@ -3,6 +3,7 @@ import styles from "@/styles/Home.module.css";
 import HTag from "@/components/HTag/HTag";
 import Button from "@/components/Button/Button";
 import P from "@/components/Paragraph/Paragraph";
+import Tag from "@/components/Tag/Tag";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,6 +29,12 @@ export default function Home() {
         <P size="L">Big</P>
         <P>Medium</P>
         <P size="S">Small</P>
+        <Tag size="M" >Medium</Tag>
+        <Tag size="S" >Small</Tag>
+        <Tag size="M" color="ghost" >Ghost</Tag>
+        <Tag size="M" color="green" >Ghost</Tag>
+        <Tag size="M" color="primary" >Ghost</Tag>
+        <Tag size="M" color="gray" href="#">Ghost</Tag>
       </main>
     </>
   );
