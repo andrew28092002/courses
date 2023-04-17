@@ -4,6 +4,7 @@ import HTag from "@/components/HTag/HTag";
 import Button from "@/components/Button/Button";
 import P from "@/components/Paragraph/Paragraph";
 import Tag from "@/components/Tag/Tag";
+import Rating from "@/components/Rating/Rating";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -35,6 +36,7 @@ export default function Home() {
         <Tag size="M" color="green" >Ghost</Tag>
         <Tag size="M" color="primary" >Ghost</Tag>
         <Tag size="M" color="gray" href="#">Ghost</Tag>
+        <Rating rating={4}/>
       </main>
     </>
   );
