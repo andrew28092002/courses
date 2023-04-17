@@ -8,7 +8,6 @@ interface ParagraphProps
   > {
   children: ReactNode;
   size?: "S" | "M" | "L";
-  className: string;
 }
 
 const P = ({ size = "M", children, className, ...props }: ParagraphProps) => {
