@@ -5,10 +5,13 @@ import Button from "@/components/Button/Button";
 import P from "@/components/Paragraph/Paragraph";
 import Tag from "@/components/Tag/Tag";
 import Rating from "@/components/Rating/Rating";
+import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [rating, setRating] = useState(0)
+
   return (
     <>
       <main>
@@ -37,7 +40,7 @@ export default function Home() {
         <Tag size="M" color="primary" >Ghost</Tag>
         <Tag size="M" color="gray" href="#">Ghost</Tag>
         <Rating rating={4}/>
-        <Rating rating={0} isEditable={true}/>
+        <Rating rating={rating} setRating={setRating} isEditable={true}/>
       </main>
     </>
   );

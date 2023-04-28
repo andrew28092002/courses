@@ -1,6 +1,7 @@
 import React, {
   DetailedHTMLProps,
   HTMLAttributes,
+  KeyboardEvent,
   useCallback,
   useEffect,
   useState,
@@ -25,6 +26,10 @@ const Rating = ({
     new Array(5).fill(<></>)
   );
 
+  useEffect(() => {
+    constructRating(rating);
+  }, [rating]);
+
   const changeDisplay = (stars: number) => {
     if (!isEditable) {
       return;
@@ -33,21 +38,40 @@ const Rating = ({
     constructRating(stars);
   };
 
+  const handleClick = (index: number) => {
+    if (!isEditable || !setRating) return;
+
+    setRating(index);
+  };
+
+  const handleSpace = (e: KeyboardEvent<SVGElement>, index: number) => {
+    if (e.code != "Space" || !setRating) return;
+
+    setRating(index);
+  };
+
   const constructRating = (currentRating: number) => {
     const updatedArr = ratingArr.map((el: JSX.Element, i) => (
-      <StarIcon key={i}
-        className={`${styles.star} ${i < currentRating && styles.filled} ${isEditable && styles.editable}`}
+      <span
+        key={i}
+        className={`${styles.star} ${i < currentRating && styles.filled} ${
+          isEditable && styles.editable
+        }`}
         onMouseEnter={() => changeDisplay(i + 1)}
         onMouseLeave={() => changeDisplay(rating)}
-      />
+        onClick={() => handleClick(i + 1)}
+      >
+        <StarIcon
+          tabIndex={isEditable ? 0 : -1}
+          onKeyDown={(e: KeyboardEvent<SVGElement>) =>
+            isEditable && handleSpace(e, i + 1)
+          }
+        />
+      </span>
     ));
 
     setRatingArr(updatedArr);
   };
-
-  useEffect(() => {
-    constructRating(rating);
-  }, [rating]);
 
   return (
     <div {...props}>
