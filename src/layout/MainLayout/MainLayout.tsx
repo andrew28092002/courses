@@ -21,4 +21,11 @@ const MainLayout: FC<MainLayoutProps> = ({ children }) => {
   );
 };
 
-export default MainLayout;
+export const withLayout =
+  <T extends Record<string, unknown>>(Component: FC<T>) =>
+  (props: T) =>
+    (
+      <MainLayout>
+        <Component {...props} />
+      </MainLayout>
+    );
