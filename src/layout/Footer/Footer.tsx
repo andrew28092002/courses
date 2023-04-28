@@ -5,7 +5,7 @@ interface FooterProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
 
 const Footer: FC<FooterProps> = ({ ...props }) => {
-  return <div {...props}>Sidebar</div>;
+  return <div {...props}>Footer</div>;
 };
 
 export default Footer;

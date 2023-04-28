@@ -1,4 +1,4 @@
-import React, { DetailedHTMLProps, FC, HTMLAttributes, ReactNode } from "react";
+import React, { FC, ReactNode } from "react";
 import styles from "./MainLayout.module.css";
 import Sidebar from "../Sidebar/Sidebar";
 import Header from "../Header/Header";
@@ -9,15 +9,16 @@ interface MainLayoutProps {
 }
 
 const MainLayout: FC<MainLayoutProps> = ({ children }) => {
+  console.log(styles);
   return (
-    <>
-      <Header />
-      <div>
-        <Sidebar />
-        <div>{children}</div>
-      </div>
-      <Footer />
-    </>
+    <div className={styles.wrapper}>
+      <Header className={styles.header} />
+
+      <Sidebar className={styles.sidebar} />
+      <div className={styles.body}>{children}</div>
+
+      <Footer className={styles.footer} />
+    </div>
   );
 };
 

@@ -5,7 +5,7 @@ interface HeaderProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
 
 const Header: FC<HeaderProps> = ({ ...props }) => {
-  return <div {...props}>Sidebar</div>;
+  return <div {...props}>Header</div>;
 };
 
 export default Header;
