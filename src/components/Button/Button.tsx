@@ -1,6 +1,7 @@
 import React, {
   ButtonHTMLAttributes,
   DetailedHTMLProps,
+  FC,
   ReactNode,
 } from "react";
 import styles from "./Button.module.css";
@@ -16,13 +17,13 @@ interface ButtonProps
   arrow?: "right" | "down" | "none";
 }
 
-const Button = ({
+const Button: FC<ButtonProps> = ({
   appearance,
   arrow = "none",
   children,
   className,
   ...props
-}: ButtonProps) => {
+}) => {
   return (
     <>
       <button

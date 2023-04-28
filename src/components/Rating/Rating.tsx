@@ -1,5 +1,6 @@
 import React, {
   DetailedHTMLProps,
+  FC,
   HTMLAttributes,
   KeyboardEvent,
   useCallback,
@@ -16,12 +17,12 @@ interface RatingProps
   setRating?: (rating: number) => void;
 }
 
-const Rating = ({
+const Rating: FC<RatingProps> = ({
   isEditable = false,
   setRating,
   rating,
   ...props
-}: RatingProps) => {
+}) => {
   const [ratingArr, setRatingArr] = useState<JSX.Element[]>(
     new Array(5).fill(<></>)
   );

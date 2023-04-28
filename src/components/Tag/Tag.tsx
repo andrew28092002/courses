@@ -1,4 +1,4 @@
-import React, { DetailedHTMLProps, HTMLAttributes, ReactNode } from "react";
+import React, { DetailedHTMLProps, FC, HTMLAttributes, ReactNode } from "react";
 import styles from "./Tag.module.css";
 
 interface TagProps
@@ -9,14 +9,14 @@ interface TagProps
   href?: string;
 }
 
-const Tag = ({
+const Tag: FC<TagProps> = ({
   children,
   size = "M",
   color = "ghost",
   href,
   className,
   ...props
-}: TagProps) => {
+}) => {
   return (
     <div
       className={`${className || ""} ${styles.tag} ${

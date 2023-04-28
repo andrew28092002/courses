@@ -1,4 +1,4 @@
-import React, { DetailedHTMLProps, HTMLAttributes, ReactNode } from "react";
+import React, { DetailedHTMLProps, FC, HTMLAttributes, ReactNode } from "react";
 import styles from "./Paragraph.module.css";
 
 interface ParagraphProps
@@ -10,7 +10,7 @@ interface ParagraphProps
   size?: "S" | "M" | "L";
 }
 
-const P = ({ size = "M", children, className, ...props }: ParagraphProps) => {
+const P: FC<ParagraphProps> = ({ size = "M", children, className, ...props }) => {
   return (
     <p
       className={`${className || ""} ${styles.p} ${
