@@ -1,13 +1,22 @@
 import React, { DetailedHTMLProps, FC, HTMLAttributes, ReactNode } from "react";
 import styles from "./MainLayout.module.css";
+import Sidebar from "../Sidebar/Sidebar";
 
-interface MainLayoutProps
-  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+interface MainLayoutProps {
   children: ReactNode;
 }
 
 const MainLayout: FC<MainLayoutProps> = ({ children }) => {
-  return <div>MainLayout</div>;
+  return (
+    <>
+      <Header />
+      <div>
+        <Sidebar />
+        <div>{children}</div>
+      </div>
+      <Footer />
+    </>
+  );
 };
 
 export default MainLayout;
