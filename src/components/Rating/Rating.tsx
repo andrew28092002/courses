@@ -36,7 +36,7 @@ const Rating = ({
   const constructRating = (currentRating: number) => {
     const updatedArr = ratingArr.map((el: JSX.Element, i) => (
       <StarIcon key={i}
-        className={`${styles.star} ${i < currentRating && styles.filled}`}
+        className={`${styles.star} ${i < currentRating && styles.filled} ${isEditable && styles.editable}`}
         onMouseEnter={() => changeDisplay(i + 1)}
         onMouseLeave={() => changeDisplay(rating)}
       />
