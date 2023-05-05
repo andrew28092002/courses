@@ -9,7 +9,7 @@ interface MainLayoutProps {
 }
 
 const MainLayout: FC<MainLayoutProps> = ({ children }) => {
-  console.log(styles);
+  
   return (
     <div className={styles.wrapper}>
       <Header className={styles.header} />
