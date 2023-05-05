@@ -8,6 +8,7 @@ import ProductsIcon from "./icons/product.svg";
 import BooksIcon from "./icons/books.svg";
 import ServicesIcon from "./icons/services.svg";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const firstLevelMenu: FirstLevelMenuItem[] = [
   {
@@ -38,6 +39,19 @@ const firstLevelMenu: FirstLevelMenuItem[] = [
 
 const Menu = () => {
   const { menu, setMenu, firstCategory } = useContext(AppContext);
+  const router = useRouter();
+
+  const openSecondLevel = (secondCategory: string) =>
+    setMenu &&
+    setMenu(
+      menu.map((m) => {
+        if (m._id.secondCategory == secondCategory) {
+          m.isOpened = !m.isOpened;
+        }
+
+        return m;
+      })
+    );
 
   const buildFirstLevel = () => (
     <>
@@ -62,18 +76,28 @@ const Menu = () => {
 
   const buildSecondLevel = (menuItem: FirstLevelMenuItem) => (
     <div className={`${styles.secondBlock}`}>
-      {menu.map((m) => (
-        <div key={m._id.secondCategory}>
-          <div className={styles.secondLevel}>{m._id.secondCategory}</div>
-          <div
-            className={`${styles.secondLevelBlock} ${
-              styles.secondLevelBlockOpened && m.isOpened
-            }`}
-          >
-            {buildThirdLevel(m.pages, menuItem.route)}
+      {menu.map((m) => {
+        if (m.pages.map((p) => p.alias).includes(router.asPath.split("/")[2])) {
+          m.isOpened = !m.isOpened;
+        }
+        return (
+          <div key={m._id.secondCategory}>
+            <div
+              className={styles.secondLevel}
+              onClick={() => openSecondLevel(m._id.secondCategory)}
+            >
+              {m._id.secondCategory}
+            </div>
+            <div
+              className={`${styles.secondLevelBlock} ${
+                m.isOpened && styles.secondLevelBlockOpened
+              }`}
+            >
+              {buildThirdLevel(m.pages, menuItem.route)}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 
@@ -83,9 +107,10 @@ const Menu = () => {
         <Link
           key={p._id}
           href={`${route}/${p.alias}`}
-          className={`${styles.thirdLevel} ${false && styles.thirdActiveLevel}`}
+          className={`${styles.thirdLevel} ${
+            `${route}/${p.alias}` == router.asPath && styles.thirdActiveLevel
+          }`}
         >
-          {" "}
           {p.category}
         </Link>
       ))}
