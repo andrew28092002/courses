@@ -10,7 +10,7 @@ import ServicesIcon from "./icons/services.svg";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-const firstLevelMenu: FirstLevelMenuItem[] = [
+export const firstLevelMenu: FirstLevelMenuItem[] = [
   {
     route: "/courses",
     name: "Курсы",
