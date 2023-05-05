@@ -9,11 +9,16 @@ import { PageModel, TopLevelCategory } from "@/interfaces/page.interface";
 import { ParsedUrlQuery } from "querystring";
 import { ProductModel } from "@/interfaces/product.inteface";
 import { firstLevelMenu } from "@/layout/Menu/Menu";
+import PageComponent from "@/components/pages/Page.component";
 
-const Course = ({ menu, products, page }: CoursePage) => {
-  const [rating, setRating] = useState(0);
-
-  return <>{products.length}</>;
+const Course = ({ firstCategory, menu, products, page }: CoursePage) => {
+  return (
+    <PageComponent
+      firstCategory={firstCategory}
+      page={page}
+      products={products}
+    />
+  );
 };
 
 export default withLayout(Course);
@@ -22,7 +27,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
   let paths: string[] = [];
 
   for (const m of firstLevelMenu) {
-   
     const { data: menu } = await axios.post<MenuItem[]>(
       process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/find",
       { firstCategory: m.id }

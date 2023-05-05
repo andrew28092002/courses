@@ -11,7 +11,6 @@ import { ProductModel } from "@/interfaces/product.inteface";
 import { firstLevelMenu } from "@/layout/Menu/Menu";
 
 const Type = ({}: TypePage) => {
-  const [rating, setRating] = useState(0);
 
   return <>Type</>;
 };
