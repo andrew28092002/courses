@@ -1,9 +1,9 @@
-import React, { DetailedHTMLProps, FC, HTMLAttributes } from "react";
+import React, { DetailedHTMLProps, FC, HTMLAttributes, InputHTMLAttributes } from "react";
 import styles from "./Input.module.css";
 
 interface InputProps
   extends DetailedHTMLProps<
-    HTMLAttributes<HTMLInputElement>,
+    InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   > {}
 
