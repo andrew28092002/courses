@@ -41,4 +41,8 @@
   .header {
     display: block;
   }
+
+  .body{
+    padding: 0 15px;
+  }
 }

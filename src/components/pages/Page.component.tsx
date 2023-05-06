@@ -54,7 +54,7 @@ const PageComponent: FC<PageProps> = ({ firstCategory, page, products }) => {
         <HTag tag="h2" className={styles.title}>Получаемые навыки</HTag>
 
         {page.tags.map((tag) => (
-          <Tag color="primary" size="M" key={tag}>
+          <Tag className={styles.skill} color="primary" size="M" key={tag}>
             {tag}
           </Tag>
         ))}
