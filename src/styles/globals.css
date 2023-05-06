@@ -5,6 +5,7 @@
   --primary: #7653FC;
   --primary-hover: #473299;
   --red: #FC836D;
+  --gray-light: #EBEBEB;
   --green: #1DC37E;
   --green-light: #C8F8E4;
   --font-family: 'Noto Sans', 'sans-serif';
@@ -15,6 +16,10 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Noto Sans', sans-serif;
+}
+
+body{
+  background: #E5E5E5;;
 }
 
 a{

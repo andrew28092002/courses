@@ -3,7 +3,7 @@ import styles from "./Card.module.css";
 
 interface CardProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  color: "blue" | "white";
+  color?: "blue" | "white";
   children: ReactNode;
 }
 

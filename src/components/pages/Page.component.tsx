@@ -5,6 +5,8 @@ import React, { FC } from "react";
 import { ProductModel } from "@/interfaces/product.inteface";
 import HTag from "../HTag/HTag";
 import Tag from "../Tag/Tag";
+import Card from "../Card/Card";
+import HhData from "../hhData/HhData";
 
 interface PageProps {
   firstCategory: TopLevelCategory;
@@ -36,9 +38,9 @@ const PageComponent: FC<PageProps> = ({ firstCategory, page, products }) => {
           hh.ru
         </Tag>
 
-        <span>Сортировка</span>
       </div>
-      <div className={styles.hh}></div>
+    
+      <HhData {...page.hh}></HhData>
     </div>
   );
 };
