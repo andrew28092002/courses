@@ -10,6 +10,7 @@ import { withLayout } from "@/layout/MainLayout/MainLayout";
 import { GetStaticProps } from "next";
 import axios from "axios";
 import { MenuItem } from "@/interfaces/menu.interface";
+import Input from "@/components/Input/Input";
 
 const Home = ({ menu, firstCategory }: HomePage) => {
   const [rating, setRating] = useState(0);
@@ -45,6 +46,7 @@ const Home = ({ menu, firstCategory }: HomePage) => {
         </Tag>
         <Rating rating={4} />
         <Rating rating={rating} setRating={setRating} isEditable={true} />
+        <Input placeholder="search..." />
       </main>
     </>
   );
