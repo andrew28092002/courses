@@ -7,6 +7,7 @@ import HTag from "../HTag/HTag";
 import Tag from "../Tag/Tag";
 import Card from "../Card/Card";
 import HhData from "../hhData/HhData";
+import Advantages from "../Advantages/Advantages";
 
 interface PageProps {
   firstCategory: TopLevelCategory;
@@ -41,6 +42,7 @@ const PageComponent: FC<PageProps> = ({ firstCategory, page, products }) => {
       </div>
     
       <HhData {...page.hh}></HhData>
+      <Advantages />
     </div>
   );
 };
