@@ -48,10 +48,17 @@ const PageComponent: FC<PageProps> = ({ firstCategory, page, products }) => {
         <Advantages advantages={page.advantages} />
       )}
 
-      {page.seoText && <P className={styles.seoText}>{page.seoText}</P>}
+      {page.seoText && (
+        <div
+          className={styles.seo}
+          dangerouslySetInnerHTML={{ __html: page.seoText }}
+        ></div>
+      )}
 
       <div className={styles.skills}>
-        <HTag tag="h2" className={styles.title}>Получаемые навыки</HTag>
+        <HTag tag="h2" className={styles.title}>
+          Получаемые навыки
+        </HTag>
 
         {page.tags.map((tag) => (
           <Tag className={styles.skill} color="primary" size="M" key={tag}>
