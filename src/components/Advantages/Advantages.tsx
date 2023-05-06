@@ -19,7 +19,7 @@ const Advantages: FC<AdvantagesProps> = ({
   return (
     <div className={`${className || ""} ${styles.wrapper}`} {...props}>
       {advantages.map((a) => (
-        <AdvantageRow title={a.title} description={a.description} />
+        <AdvantageRow key={a._id} title={a.title} description={a.description} />
       ))}
     </div>
   );

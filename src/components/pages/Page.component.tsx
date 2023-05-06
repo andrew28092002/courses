@@ -9,6 +9,7 @@ import Card from "../Card/Card";
 import HhData from "../hhData/HhData";
 import Advantages from "../Advantages/Advantages";
 import P from "../Paragraph/Paragraph";
+import Sort, { SortEnum } from "../Sort/Sort";
 
 interface PageProps {
   firstCategory: TopLevelCategory;
@@ -27,7 +28,7 @@ const PageComponent: FC<PageProps> = ({ firstCategory, page, products }) => {
             {products.length}
           </Tag>
         )}
-        <span>Сортировка</span>
+        <Sort sort={SortEnum.Price} setSort={() => {}}/>
       </div>
       <div>
         {products && products.map((p) => <div key={p._id}>{p.title}</div>)}
