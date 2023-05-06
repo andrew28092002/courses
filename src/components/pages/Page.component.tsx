@@ -8,6 +8,7 @@ import Tag from "../Tag/Tag";
 import Card from "../Card/Card";
 import HhData from "../hhData/HhData";
 import Advantages from "../Advantages/Advantages";
+import P from "../Paragraph/Paragraph";
 
 interface PageProps {
   firstCategory: TopLevelCategory;
@@ -43,7 +44,21 @@ const PageComponent: FC<PageProps> = ({ firstCategory, page, products }) => {
       {firstCategory == TopLevelCategory.Courses && page.hh && (
         <HhData {...page.hh}></HhData>
       )}
-      {page.advantages && page.advantages.length && <Advantages advantages={page.advantages}/>}
+      {page.advantages && page.advantages.length && (
+        <Advantages advantages={page.advantages} />
+      )}
+
+      {page.seoText && <P className={styles.seoText}>{page.seoText}</P>}
+
+      <div className={styles.skills}>
+        <HTag tag="h2" className={styles.title}>Получаемые навыки</HTag>
+
+        {page.tags.map((tag) => (
+          <Tag color="primary" size="M" key={tag}>
+            {tag}
+          </Tag>
+        ))}
+      </div>
     </div>
   );
 };
