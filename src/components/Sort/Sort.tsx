@@ -1,6 +1,7 @@
 import React, { DetailedHTMLProps, FC, HTMLAttributes } from "react";
 import styles from "./Sort.module.css";
 import SortIcon from "./sort.svg";
+import { ProductModel } from "@/interfaces/product.inteface";
 
 interface SortProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -14,7 +15,7 @@ export enum SortEnum {
 }
 
 const Sort: FC<SortProps> = ({ sort, setSort, className, ...props }) => {
-    
+
   return (
     <div className={`${className || ""} ${styles.sort}`} {...props}>
       <span
@@ -22,14 +23,14 @@ const Sort: FC<SortProps> = ({ sort, setSort, className, ...props }) => {
         className={`${sort == SortEnum.Rating && styles.active}`}
       >
         <SortIcon className={styles.sortIcon} />
-        По&nbsp;Рейтингу
+        По рейтингу
       </span>
       <span
-        onClick={() => setSort(SortEnum.Rating)}
+        onClick={() => setSort(SortEnum.Price)}
         className={`${sort == SortEnum.Price && styles.active}`}
       >
         <SortIcon className={styles.sortIcon} />
-        По&nbsp;Цене
+        По цене
       </span>
     </div>
   );

@@ -1,14 +1,11 @@
 import { PageModel, TopLevelCategory } from "@/interfaces/page.interface";
 import styles from "./Page.module.css";
-
-import React, { FC } from "react";
+import React, { FC, useReducer } from "react";
 import { ProductModel } from "@/interfaces/product.inteface";
 import HTag from "../HTag/HTag";
 import Tag from "../Tag/Tag";
-import Card from "../Card/Card";
 import HhData from "../hhData/HhData";
 import Advantages from "../Advantages/Advantages";
-import P from "../Paragraph/Paragraph";
 import Sort, { SortEnum } from "../Sort/Sort";
 
 interface PageProps {
@@ -18,7 +15,42 @@ interface PageProps {
   products: ProductModel[];
 }
 
+type SortActions = { type: SortEnum.Price } | { type: SortEnum.Rating };
+
+interface SortReducerState {
+  sort: SortEnum;
+  products: ProductModel[];
+}
+
+const sortReducer = (state: SortReducerState, action: SortActions) => {
+  switch (action.type) {
+    case SortEnum.Rating:
+      return {
+        sort: SortEnum.Rating,
+        products: state.products.sort((a, b) =>
+          a.initialRating > b.initialRating ? -1 : 1
+        ),
+      };
+    case SortEnum.Price:
+      return {
+        sort: SortEnum.Price,
+        products: state.products.sort((a, b) => (a.price > b.price ? -1 : 1)),
+      };
+    default:
+      throw new Error("Неверный тип сортировки");
+  }
+};
+
 const PageComponent: FC<PageProps> = ({ firstCategory, page, products }) => {
+  const [{ products: sortedProducts, sort }, dispatchSort] = useReducer(sortReducer, {
+    products,
+    sort: SortEnum.Rating,
+  });
+ 
+  const setSort = (sort: SortEnum) => {
+    dispatchSort({type: sort})
+  }
+
   return (
     <div className={styles.wrapper}>
       <div className={`${styles.title}`}>
@@ -28,10 +60,10 @@ const PageComponent: FC<PageProps> = ({ firstCategory, page, products }) => {
             {products.length}
           </Tag>
         )}
-        <Sort sort={SortEnum.Price} setSort={() => {}}/>
+        <Sort sort={sort} setSort={setSort} />
       </div>
       <div>
-        {products && products.map((p) => <div key={p._id}>{p.title}</div>)}
+        {sortedProducts && sortedProducts.map((p) => <div key={p._id}>{p.title}</div>)}
       </div>
 
       <div className={`${styles.hhTitle}`}>
