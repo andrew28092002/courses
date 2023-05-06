@@ -47,7 +47,7 @@ const HhData: FC<HhDataProps> = ({
 
         <div>
           <div className={styles.title}>Профессионал</div>
-          <div className={styles.salaryValue}>{priceRu(middleSalary)}</div>
+          <div className={styles.salaryValue}>{priceRu(seniorSalary)}</div>
           <div className={styles.rate}>
             <StarIcon className={styles.filled} />
             <StarIcon />

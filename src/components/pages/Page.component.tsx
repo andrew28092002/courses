@@ -38,11 +38,12 @@ const PageComponent: FC<PageProps> = ({ firstCategory, page, products }) => {
         <Tag color="red" size="M">
           hh.ru
         </Tag>
-
       </div>
-    
-      <HhData {...page.hh}></HhData>
-      <Advantages />
+
+      {firstCategory == TopLevelCategory.Courses && page.hh && (
+        <HhData {...page.hh}></HhData>
+      )}
+      {page.advantages && page.advantages.length && <Advantages advantages={page.advantages}/>}
     </div>
   );
 };
