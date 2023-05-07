@@ -1,0 +1,149 @@
+.product {
+  display: grid;
+  grid-template-columns:
+    [start] 70px [logoend] 30px [titlestart] calc(50% - 100px)
+    [middle] 1fr [pricestart] auto [priceend] 40px [creditstart] auto [creditend] 40px [ratestart] auto [end];
+  margin-bottom: 30px;
+  padding: 30px;
+}
+
+.logo {
+  grid-column: start / logoend;
+  grid-row: 1 / span 2;
+}
+
+.title,
+.tags {
+  grid-column: titlestart / middle;
+}
+
+.price,
+.priceTitle {
+  grid-column: pricestart / priceend;
+}
+
+.credit,
+.creditTitle {
+  grid-column: creditstart / creditend;
+}
+
+.rating,
+.rateTitle {
+  grid-column: ratestart / end;
+}
+
+.hr,
+.description,
+.actions {
+  grid-column: start / end;
+}
+
+.feature {
+  grid-column: start / middle;
+}
+
+.advBlock {
+  grid-column: middle / end;
+}
+
+.logo img {
+  border-radius: 5px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+  align-self: flex-end;
+  color: var(--black);
+}
+
+.price,
+.credit {
+  align-self: flex-end;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+  color: var(--black);
+}
+
+.rating {
+  align-self: flex-end;
+}
+
+.priceTitle,
+.rateTitle,
+.creditTitle {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 19px;
+  color: var(--black);
+}
+
+.oldPrice {
+  margin-left: 5px;
+}
+
+.month {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  color: var(--black);
+}
+
+.category {
+  margin-top: 7px;
+}
+
+.description {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--black);
+
+  margin-bottom: 15px;
+}
+
+.advBlock {
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--black);
+}
+
+.reviewButton {
+  margin-left: 20px;
+}
+
+.advTitle {
+  font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.advantages{
+    border-left: 2px solid var(--green);
+    padding-left: 15px;
+    margin-bottom: 20px;
+}
+
+.disadvantages {
+    border-left: 2px solid var(--red);
+    padding-left: 15px;
+}
+
+.characteristics {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 10px;
+  padding-right: 60px;
+  font-size: 16px;
+  line-height: 32px;
+}
+
+.characteristicsName{
+  font-weight: bold;
+}
+
+.characteristicsDots{
+  border-bottom: 1px dashed var(--gray-light);
+  margin-bottom: 5px;
+}

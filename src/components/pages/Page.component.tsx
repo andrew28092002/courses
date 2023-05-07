@@ -7,6 +7,7 @@ import Tag from "../Tag/Tag";
 import HhData from "../hhData/HhData";
 import Advantages from "../Advantages/Advantages";
 import Sort, { SortEnum } from "../Sort/Sort";
+import Product from "../Product/Product";
 
 interface PageProps {
   firstCategory: TopLevelCategory;
@@ -63,7 +64,7 @@ const PageComponent: FC<PageProps> = ({ firstCategory, page, products }) => {
         <Sort sort={sort} setSort={setSort} />
       </div>
       <div>
-        {sortedProducts && sortedProducts.map((p) => <div key={p._id}>{p.title}</div>)}
+        {sortedProducts && sortedProducts.map((p) => <Product key={p._id} product={p}/>)}
       </div>
 
       <div className={`${styles.hhTitle}`}>

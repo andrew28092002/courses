@@ -6,7 +6,7 @@ import StarIcon from "./star.svg";
 
 interface HhDataProps extends Hh {}
 
-const priceRu = (price: number) =>
+export const priceRu = (price: number) =>
   price
     .toString()
     .replace(/\B(?=(\d{3})+(?!\d))/g, " ")
