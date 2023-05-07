@@ -4,6 +4,7 @@
 
 .body {
   grid-area: body;
+  margin-left: 50px;
 }
 .footer {
   grid-area: footer;
@@ -36,6 +37,7 @@
 
   .sidebar {
     display: none !important;
+    margin-left: 0;
   }
 
   .header {
@@ -45,4 +47,5 @@
   .body{
     padding: 0 15px;
   }
+
 }
