@@ -62,7 +62,7 @@ const Product: FC<ProductProps> = ({ product, className, ...props }) => {
         {product.reviewCount}{" "}
         {declOfNumber(product.reviewCount, ["отзыв", "отзыва", "отзывов"])}
       </div>
-      <Divider className={styles.hr} />
+      <Divider className={styles.hr1} />
 
       <div className={styles.description}>{product.description}</div>
       <div className={styles.feature}>
@@ -88,7 +88,7 @@ const Product: FC<ProductProps> = ({ product, className, ...props }) => {
           </div>
         )}
       </div>
-      <Divider className={styles.hr} />
+      <Divider className={styles.hr2} />
       <div className={styles.actions}>
         <Button appearance="primary">Узнать подробнее</Button>
         <Button
