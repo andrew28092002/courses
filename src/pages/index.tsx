@@ -11,6 +11,7 @@ import { GetStaticProps } from "next";
 import axios from "axios";
 import { MenuItem } from "@/interfaces/menu.interface";
 import Input from "@/components/Input/Input";
+import Textarea from "@/components/Textarea/Textarea";
 
 const Home = ({ menu, firstCategory }: HomePage) => {
   const [rating, setRating] = useState(0);
@@ -47,6 +48,7 @@ const Home = ({ menu, firstCategory }: HomePage) => {
         <Rating rating={4} />
         <Rating rating={rating} setRating={setRating} isEditable={true} />
         <Input placeholder="search..." />
+        <Textarea placeholder="search..." />
       </main>
     </>
   );
