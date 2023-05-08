@@ -5,22 +5,26 @@ import React, {
   HTMLAttributes,
   KeyboardEvent,
   forwardRef,
-  useCallback,
   useEffect,
   useState,
 } from "react";
 import styles from "./Rating.module.css";
 import StarIcon from "./Vector.svg";
+import { FieldError } from "react-hook-form";
 
 interface RatingProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   isEditable?: boolean;
   rating: number;
   setRating?: (rating: number) => void;
+  error?: FieldError;
 }
 
 const Rating = forwardRef(
-  ({ isEditable = false, setRating, rating, ...props }: RatingProps, ref: ForwardedRef<HTMLDivElement>) => {
+  (
+    { error, isEditable = false, setRating, rating, ...props }: RatingProps,
+    ref: ForwardedRef<HTMLDivElement>
+  ) => {
     const [ratingArr, setRatingArr] = useState<JSX.Element[]>(
       new Array(5).fill(<></>)
     );
@@ -73,10 +77,13 @@ const Rating = forwardRef(
     };
 
     return (
-      <div {...props} ref={ref}>
-        {ratingArr.map((el, i) => (
-          <span key={i}>{el}</span>
-        ))}
+      <div className={`${styles.wrapper}`} {...props} ref={ref}>
+        <div>
+          {ratingArr.map((el, i) => (
+            <span key={i}>{el}</span>
+          ))}
+        </div>
+        {error && <span className={styles.errorMessage}>{error.message}</span>}
       </div>
     );
   }

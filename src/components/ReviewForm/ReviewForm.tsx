@@ -52,9 +52,12 @@ const ReviewForm: FC<ReviewFormProps> = ({
           <Controller
             control={control}
             name="rating"
+            rules={{ required: { value: true, message: "Поставьте оценку" } }}
             render={({ field }) => (
               <Rating
                 isEditable
+                ref={field.ref}
+                error={errors.rating}
                 rating={field.value}
                 setRating={field.onChange}
               />
