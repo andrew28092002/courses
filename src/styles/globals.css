@@ -19,8 +19,15 @@
   font-family: 'Noto Sans', sans-serif;
 }
 
+html{
+  width: 100vw;
+  height: 100vh;
+}
+
 body{
   background: #E5E5E5;
+  width: 100vw;
+  height: 100vh;
 }
 
 a{

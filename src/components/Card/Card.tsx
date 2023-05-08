@@ -15,7 +15,7 @@ const Card: FC<CardProps> = ({
 }) => {
   return (
     <div
-      className={`${className || ""} ${styles.card} ${
+      className={`${className ?? ""} ${styles.card} ${
         color == "blue" && styles.blue
       }`}
       {...props}

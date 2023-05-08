@@ -8,6 +8,7 @@ import Button from "../Button/Button";
 import { priceRu } from "../hhData/HhData";
 import Divider from "../Divider/Divider";
 import Review from "../Review/Review";
+import ReviewForm from "../ReviewForm/ReviewForm";
 
 interface ProductProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -116,6 +117,7 @@ const Product: FC<ProductProps> = ({ product, className, ...props }) => {
             <Divider />
           </>
         ))}
+        <ReviewForm productId={product._id} />
       </Card>
     </>
   );

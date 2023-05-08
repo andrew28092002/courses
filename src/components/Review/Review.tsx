@@ -11,8 +11,8 @@ interface ReviewProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, 
 const Review: FC<ReviewProps> = ({review, className, ...props}) => {
     const {name, title, description, createdAt, rating } = review
   return (
-    <div className={`${className || ''} ${styles.review}`} {...props}>
-        <UserIcon />
+    <div className={`${className ?? ''} ${styles.review}`} {...props}>
+        <UserIcon className={styles.userIcon}/>
         <div className={styles.user}>
             <span className={styles.name}>{name}: </span>
             <span>{title}</span>

@@ -165,7 +165,7 @@
       "advBlock advBlock advBlock advBlock advBlock advBlock advBlock"
       "hr2 hr2 hr2 hr2 hr2 hr2 hr2"
       "actions actions actions actions actions actions actions";
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     padding: 30px;
   }
 
@@ -236,7 +236,7 @@
       "advBlock advBlock advBlock"
       "hr2 hr2 hr2"
       "actions actions actions";
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     padding: 30px;
   }
 }
