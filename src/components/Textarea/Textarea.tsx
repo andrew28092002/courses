@@ -1,4 +1,4 @@
-import React, { DetailedHTMLProps, FC, TextareaHTMLAttributes } from 'react'
+import React, { DetailedHTMLProps, FC, ForwardedRef, TextareaHTMLAttributes, forwardRef } from 'react'
 import styles from './Textarea.module.css'
 
 interface TextareaProps
@@ -7,10 +7,10 @@ interface TextareaProps
     HTMLTextAreaElement
   > {}
 
-const Textarea: FC<TextareaProps> = ({ className, ...props }) => {
+const Textarea = forwardRef(({ className, ...props }: TextareaProps, ref: ForwardedRef<HTMLTextAreaElement>) => {
   return (
    <textarea className={`${className || ''} ${styles.textarea}`} {...props}></textarea>
   );
-};
+});
 
 export default Textarea;
