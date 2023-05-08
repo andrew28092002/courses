@@ -117,7 +117,7 @@ const Menu = () => {
     </div>
   );
 
-  return <div className={`${styles.menu}`}>{buildFirstLevel()}</div>;
+  return <div>{buildFirstLevel()}</div>;
 };
 
 export default Menu;

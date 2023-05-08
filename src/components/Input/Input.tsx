@@ -7,25 +7,33 @@ import React, {
   forwardRef,
 } from "react";
 import styles from "./Input.module.css";
+import { FieldError } from "react-hook-form";
 
 interface InputProps
   extends DetailedHTMLProps<
     InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
-  > {}
+  > {
+  error?: FieldError;
+}
 
 const Input = forwardRef(
   (
-    { className, ...props }: InputProps,
+    { className, error, ...props }: InputProps,
     ref: ForwardedRef<HTMLInputElement>
   ): JSX.Element => {
     return (
-      <input
-        className={`${className || ""} ${styles.input}`}
-        {...props}
-        type="text"
-        ref={ref}
-      />
+      <div className={styles.inputWrapper}>
+        <input
+          className={`${className || ""} ${styles.input} ${
+            error && styles.error
+          }`}
+          {...props}
+          type="text"
+          ref={ref}
+        />
+        {error && <span className={styles.errorMessage}>{error.message}</span>}
+      </div>
     );
   }
 );

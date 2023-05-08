@@ -18,7 +18,12 @@ const ReviewForm: FC<ReviewFormProps> = ({
   className,
   ...props
 }) => {
-  const { register, control, handleSubmit } = useForm<IReviewForm>();
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IReviewForm>();
 
   const onSubmit = (data: IReviewForm) => {
     console.log(data);
@@ -27,9 +32,18 @@ const ReviewForm: FC<ReviewFormProps> = ({
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className={`${className || ""} ${styles.reviewForm}`} {...props}>
-        <Input {...register("name")} placeholder="Имя" />
         <Input
-          {...register("title")}
+          {...register("name", {
+            required: { value: true, message: "Заполните имя" },
+          })}
+          error={errors.name}
+          placeholder="Имя"
+        />
+        <Input
+          {...register("title", {
+            required: { value: true, message: "Заполните заголовок" },
+          })}
+          error={errors.title}
           placeholder="Заголовок отзыва"
           className={styles.title}
         />
@@ -48,7 +62,10 @@ const ReviewForm: FC<ReviewFormProps> = ({
           />
         </div>
         <Textarea
-          {...register("description")}
+          {...register("description", {
+            required: { value: true, message: "Заполните описание" },
+          })}
+          error={errors.description}
           placeholder="Текст отзыва"
           className={styles.description}
         />
