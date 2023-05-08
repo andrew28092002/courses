@@ -9,7 +9,7 @@ interface TextareaProps
 
 const Textarea = forwardRef(({ className, ...props }: TextareaProps, ref: ForwardedRef<HTMLTextAreaElement>) => {
   return (
-   <textarea className={`${className || ''} ${styles.textarea}`} {...props}></textarea>
+   <textarea ref={ref} className={`${className || ''} ${styles.textarea}`} {...props}></textarea>
   );
 });
 
