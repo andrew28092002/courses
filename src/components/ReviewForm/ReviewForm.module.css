@@ -10,7 +10,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 19px;
-  color: var(--black)
+  color: var(--black);
 }
 
 .title {
@@ -18,7 +18,8 @@
 }
 
 .description,
-.submit, .success {
+.submit,
+.success, .error {
   grid-column: start / end;
 }
 
@@ -28,40 +29,52 @@
   gap: 0 20px;
 }
 
-.submitButton{
-    margin-right: 20px;
+.submitButton {
+  margin-right: 20px;
 }
 
-.success{
-    background: var(--green-light);
-    padding: 20px;
-    position: relative;
-    border-radius: 5px;
-    cursor: pointer;
+.success {
+  background: var(--green-light);
+  padding: 20px;
+  position: relative;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.successTitle{
-    font-weight: bold;
+.error {
+  background: var(--red-light);
+  padding: 20px;
+  position: relative;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.close{
-    position: absolute;
-    top: 20px;
-    right: 20px;
+.successTitle, .errorTitle {
+  font-weight: bold;
+}
+
+.errorClose path{
+    stroke: var(--black)
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 
 @media screen and (max-width: 1100px) {
-    .reviewForm{
-        grid-template-columns: [start] 1fr 1fr [end];
-    }
-    
-    .rating{
-        grid-column: start / end;
-    }
+  .reviewForm {
+    grid-template-columns: [start] 1fr 1fr [end];
+  }
+
+  .rating {
+    grid-column: start / end;
+  }
 }
 
 @media screen and (max-width: 640px) {
-    .reviewForm{
-        grid-template-columns: [start] 1fr [end];
-    }
+  .reviewForm {
+    grid-template-columns: [start] 1fr [end];
+  }
 }
