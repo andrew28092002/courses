@@ -1,4 +1,10 @@
-import React, { DetailedHTMLProps, FC, HTMLAttributes, ReactNode } from "react";
+import React, {
+  DetailedHTMLProps,
+  ForwardedRef,
+  HTMLAttributes,
+  ReactNode,
+  forwardRef,
+} from "react";
 import styles from "./Card.module.css";
 
 interface CardProps
@@ -7,22 +13,23 @@ interface CardProps
   children: ReactNode;
 }
 
-const Card: FC<CardProps> = ({
-  color = "white",
-  className,
-  children,
-  ...props
-}) => {
-  return (
-    <div
-      className={`${className ?? ""} ${styles.card} ${
-        color == "blue" && styles.blue
-      }`}
-      {...props}
-    >
-      {children}
-    </div>
-  );
-};
+const Card = forwardRef(
+  (
+    { color = "white", className, children, ...props }: CardProps,
+    ref: ForwardedRef<HTMLDivElement>
+  ) => {
+    return (
+      <div
+        className={`${className ?? ""} ${styles.card} ${
+          color == "blue" && styles.blue
+        }`}
+        ref={ref}
+        {...props}
+      >
+        {children}
+      </div>
+    );
+  }
+);
 
 export default Card;
