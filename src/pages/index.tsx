@@ -19,36 +19,8 @@ const Home = ({ menu, firstCategory }: HomePage) => {
   return (
     <>
       <main>
-        <HTag tag="h1">Something</HTag>
-        <HTag tag="h2">Something</HTag>
-        <HTag tag="h3">Something</HTag>
-        <Button appearance="primary" arrow="right">
-          Submit
-        </Button>
-        <Button appearance="ghost" arrow="down">
-          Submit
-        </Button>
-        <P size="L">Big</P>
-        <P>Medium</P>
-        <P size="S">Small</P>
-        <Tag size="M">Medium</Tag>
-        <Tag size="S">Small</Tag>
-        <Tag size="M" color="ghost">
-          Ghost
-        </Tag>
-        <Tag size="M" color="green">
-          Ghost
-        </Tag>
-        <Tag size="M" color="primary">
-          Ghost
-        </Tag>
-        <Tag size="M" color="gray" href="#">
-          Ghost
-        </Tag>
-        <Rating rating={4} />
-        <Rating rating={rating} setRating={setRating} isEditable={true} />
-        <Input placeholder="search..." />
-        <Textarea placeholder="search..." />
+        
+        
       </main>
     </>
   );

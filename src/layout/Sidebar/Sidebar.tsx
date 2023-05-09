@@ -11,7 +11,6 @@ const Sidebar: FC<SidebarProps> = ({className, ...props }) => {
   return <div className={`${className || ''} ${styles.sidebar}`} {...props}>
     <Logo className={styles.logo}/>
     <Search />
-    <div><input type="text" placeholder="Поиск..." /></div>
     <Menu />
   </div>;
 };

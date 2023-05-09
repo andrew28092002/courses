@@ -95,7 +95,7 @@ const PageComponent: FC<PageProps> = ({ firstCategory, page, products }) => {
         <HhData {...page.hh}></HhData>
       )}
 
-      {page.advantages && page.advantages.length && (
+      {page.advantages && page.advantages.length > 0 && (
         <Advantages advantages={page.advantages} />
       )}
 
