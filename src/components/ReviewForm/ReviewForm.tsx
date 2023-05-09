@@ -106,15 +106,21 @@ const ReviewForm: FC<ReviewFormProps> = ({
           <div className={styles.success}>
             <div className={styles.successTitle}>Ваш отзыв отправлен</div>
             <div>Спасибо, ваш отзыв будет опубликован после проверки</div>
-            <CloseIcon className={styles.close} />
+            <CloseIcon
+              className={styles.close}
+              onClick={() => setIsSuccess(false)}
+            />
           </div>
         )}
 
         {error && (
           <div className={styles.error}>
             <div className={styles.errorTitle}>Ошибка</div>
-            <div>{error}</div>
-            <CloseIcon className={`${styles.close} ${styles.errorClose}`} />
+            <div>Что-то пошло не так...</div>
+            <CloseIcon
+              className={`${styles.close} ${styles.errorClose}`}
+              onClick={() => setError(undefined)}
+            />
           </div>
         )}
       </div>
