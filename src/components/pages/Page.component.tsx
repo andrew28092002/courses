@@ -1,6 +1,6 @@
 import { PageModel, TopLevelCategory } from "@/interfaces/page.interface";
 import styles from "./Page.module.css";
-import React, { FC, useReducer } from "react";
+import React, { FC, useEffect, useReducer } from "react";
 import { ProductModel } from "@/interfaces/product.inteface";
 import HTag from "../HTag/HTag";
 import Tag from "../Tag/Tag";
@@ -16,7 +16,10 @@ interface PageProps {
   products: ProductModel[];
 }
 
-type SortActions = { type: SortEnum.Price } | { type: SortEnum.Rating };
+type SortActions =
+  | { type: SortEnum.Price }
+  | { type: SortEnum.Rating }
+  | { type: "reset"; initialState: ProductModel[] };
 
 interface SortReducerState {
   sort: SortEnum;
@@ -37,20 +40,32 @@ const sortReducer = (state: SortReducerState, action: SortActions) => {
         sort: SortEnum.Price,
         products: state.products.sort((a, b) => (a.price > b.price ? -1 : 1)),
       };
+    case 'reset':
+      return {
+        sort: SortEnum.Rating,
+        products: action.initialState
+      }
     default:
       throw new Error("Неверный тип сортировки");
   }
 };
 
 const PageComponent: FC<PageProps> = ({ firstCategory, page, products }) => {
-  const [{ products: sortedProducts, sort }, dispatchSort] = useReducer(sortReducer, {
-    products,
-    sort: SortEnum.Rating,
-  });
- 
+  const [{ products: sortedProducts, sort }, dispatchSort] = useReducer(
+    sortReducer,
+    {
+      products,
+      sort: SortEnum.Rating,
+    }
+  );
+
+  useEffect(() => {
+    dispatchSort({type: 'reset', initialState: products})
+  }, [products])
+
   const setSort = (sort: SortEnum) => {
-    dispatchSort({type: sort})
-  }
+    dispatchSort({ type: sort });
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -64,7 +79,8 @@ const PageComponent: FC<PageProps> = ({ firstCategory, page, products }) => {
         <Sort sort={sort} setSort={setSort} />
       </div>
       <div>
-        {sortedProducts && sortedProducts.map((p) => <Product key={p._id} product={p}/>)}
+        {sortedProducts &&
+          sortedProducts.map((p) => <Product key={p._id} product={p} />)}
       </div>
 
       <div className={`${styles.hhTitle}`}>
@@ -78,7 +94,7 @@ const PageComponent: FC<PageProps> = ({ firstCategory, page, products }) => {
       {firstCategory == TopLevelCategory.Courses && page.hh && (
         <HhData {...page.hh}></HhData>
       )}
-      
+
       {page.advantages && page.advantages.length && (
         <Advantages advantages={page.advantages} />
       )}
