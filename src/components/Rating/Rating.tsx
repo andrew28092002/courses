@@ -77,12 +77,11 @@ const Rating = forwardRef(
     };
 
     return (
-      <div className={`${styles.wrapper}`} {...props} ref={ref}>
-        <div>
-          {ratingArr.map((el, i) => (
-            <span key={i}>{el}</span>
-          ))}
-        </div>
+      <div className={`${styles.wrapper} ${error && styles.error}`} {...props} ref={ref}>
+        {ratingArr.map((el, i) => (
+          <span key={i}>{el}</span>
+        ))}
+
         {error && <span className={styles.errorMessage}>{error.message}</span>}
       </div>
     );
